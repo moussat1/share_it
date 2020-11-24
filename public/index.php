@@ -14,9 +14,15 @@ require_once __DIR__ . '/../config/bootstrap.php';
 
 // Application routes
 $app
-    ->get('/', [HomeController::class, 'homepage'])
+    ->map (['GET','POST'],'/', [HomeController::class, 'homepage'])
+   
     ->setName('homepage')
 ;
+
+$app
+->get ('/telechargement/{id:\d+}', [HomeController::class,'telechargement']) 
+->setName ('telechargement');
+
 
 // Start the application
 $app->run();
